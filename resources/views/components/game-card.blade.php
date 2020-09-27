@@ -4,7 +4,7 @@
          <a href="{{ route('games.show',$game['slug']) }}">
              <img src="{{ $game['coverImgUrl'] }}" alt="game cover image" class="duration-150 hover:opacity-75 transition-ease-in-out">
          </a>
-
+         @if(!empty($game['rating']))
          <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px" id="{{ $game['slug'] }}">
 
          </div>
@@ -15,6 +15,7 @@
             'event' => null,
          ])
         @endpush
+        @endif
     </div>
     <a href="{{ route('games.show',$game['slug']) }}" class="block mt-8 text-base font-semibold leading-tight hover:text-gray-400">
         {{ $game['name'] }}

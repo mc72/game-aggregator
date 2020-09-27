@@ -6,4 +6,10 @@
     <x-game-card-skeleton />
     @endforeach
    @endforelse
-</div>
+</div><!-- end popular games -->
+
+@push('scripts')
+@include('_rating', [
+        'event' => 'gameWithRatingAdded'
+    ])
+@endpush

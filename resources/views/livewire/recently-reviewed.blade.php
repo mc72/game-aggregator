@@ -5,13 +5,13 @@
             <a href="{{ route('games.show',$game['slug']) }}">
                 <img src="{{ $game['coverImgUrl'] }}" alt="game cover image" class="duration-150 hover:opacity-75 transition-ease-in-out">
             </a>
-            @if(isset($game['rating']))
-            <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-900 rounded-full" style="right:-20px; bottom:-20px">
-                <div class="flex items-center justify-center h-full text-xs font-semibold" >
-                    {{ $game['rating'] }}
+
+            <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-900 rounded-full" style="right:-20px; bottom:-20px" id="review_{{ $game['slug'] }}">
+                <div class="relative text-xs font-semibold" >
+
                 </div>
             </div>
-            @endif
+
         </div>
         <div class="ml-12">
             <a href="#" class="block mt-4 text-lg font-semibold leading-tight hover:text-gray-400">
@@ -44,3 +44,9 @@
     @endforeach
     @endforelse
 </div>
+@push('scripts')
+@include('_rating', [
+        'event' => 'recentGameWithRatingAdded'
+    ])
+@endpush
+
