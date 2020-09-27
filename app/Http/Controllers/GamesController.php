@@ -63,6 +63,8 @@ class GamesController extends Controller
 
         abort_if(!$game,404);
 
+        //dump($game);
+
         return view('show', [
             'game' => $this->formatGameForView($game[0])
         ]);
@@ -75,8 +77,8 @@ class GamesController extends Controller
             'genres' => collect($game['genres'])->pluck('name')->filter()->implode(', '),
             'companies' => collect($game['involved_companies'])->pluck('company')->pluck('name')->filter()->implode(', '),
             'platforms' => collect($game['platforms'])->pluck('abbreviation')->filter()->implode(', '),
-            'memberRating' =>  array_key_exists('rating', $game) ? round($game['rating']).'%' : 'NR',
-            'criticRating' => array_key_exists('aggregated_rating', $game) ? round($game['aggregated_rating']).'%' : 'NR',
+            'memberRating' =>  array_key_exists('rating', $game) ? round($game['rating']) : '0',
+            'criticRating' => array_key_exists('aggregated_rating', $game) ? round($game['aggregated_rating']) : '0',
             'trailer' => array_key_exists('videos', $game) ? 'https://youtube.com/watch/'.$game['videos'][0]['video_id'] : "https://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=youtu.be",
             'screenshots' => collect($game['screenshots'])->map(function($screenshot){
                 return[
@@ -87,7 +89,7 @@ class GamesController extends Controller
             'similarGames' => collect($game['similar_games'])->map(function($game){
              return collect($game)->merge([
                     'coverImgUrl' => isset($game['cover']) ? Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) : 'https://via.placeholder.com/168x224?text=Image+Coming+Soon',
-                    'rating' =>  array_key_exists('rating', $game) ? round($game['rating']).'%' : 'NR',
+                    'rating' =>  array_key_exists('rating', $game) ? round($game['rating']): '0',
                     'platforms' => array_key_exists('platforms',$game) ? collect($game['platforms'])->pluck('abbreviation')->filter()->implode(', ') : "" ,
                 ]);
             })->take(6),
