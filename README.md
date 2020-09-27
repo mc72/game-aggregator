@@ -1,4 +1,4 @@
-# Vide0 Game Review Aggregator
+# Video Game Review Aggregator
 
 A Video Game review aggregator using Laravel
 
