@@ -131,7 +131,7 @@
                     href="#"
                     @click.prevent="
                       isImageModalVisible=true
-                      image='{{ $screenshot["huge"] }}'
+                      image='{{ $screenshot["big"] }}'
                     "
                 >
                     <img src="{{ $screenshot['big'] }} " alt="screenshot" class="transition duration-500 ease-in-out hover:opacity-75">
