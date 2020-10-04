@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Games</title>
-  @livewireStyles
+  <title>Laracasts Video Games</title>
   <link rel="stylesheet" href="/css/main.css">
+  @livewireStyles
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
 </head>
 <body class="text-white bg-gray-900">
   <header class="border-b border-gray-800">
